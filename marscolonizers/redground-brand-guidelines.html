@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redground — Brand Guidelines</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #0a0705;
+    color: #e8ddd0;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  :root {
+    --rust: #b84a1e;
+    --rust-light: #d4673a;
+    --rust-pale: #e8b89a;
+    --dust: #c9a882;
+    --ash: #8c7b6e;
+    --void: #0a0705;
+    --crater: #1a1210;
+    --smoke: #2e1f17;
+    --pale: #f0e8df;
+    --gold: #c4a35a;
+    --gold-pale: #e8d4a0;
+  }
+
+  .cover {
+    background: #0a0705;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px 60px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #2e1f17;
+  }
+
+  .cover-bg-line {
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 59px,
+      rgba(180,74,30,0.06) 59px,
+      rgba(180,74,30,0.06) 60px
+    );
+    pointer-events: none;
+  }
+
+  .cover-circle {
+    position: absolute;
+    right: -120px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    border: 1px solid rgba(180,74,30,0.15);
+    box-shadow: inset 0 0 80px rgba(180,74,30,0.08), 0 0 120px rgba(180,74,30,0.05);
+  }
+
+  .cover-circle::after {
+    content: '';
+    position: absolute;
+    inset: 30px;
+    border-radius: 50%;
+    border: 1px solid rgba(180,74,30,0.1);
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 32px;
+  }
+
+  .brand-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(72px, 12vw, 130px);
+    letter-spacing: 0.05em;
+    color: var(--pale);
+    line-height: 0.9;
+    position: relative;
+  }
+
+  .brand-name .accent { color: var(--rust); }
+
+  .brand-tagline {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 20px;
+    color: var(--dust);
+    margin-top: 24px;
+    max-width: 380px;
+    line-height: 1.5;
+  }
+
+  .brand-sub {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--ash);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-top: 48px;
+    padding-top: 24px;
+    border-top: 1px solid #2e1f17;
+    width: 100%;
+  }
+
+  section {
+    padding: 80px 60px;
+    border-bottom: 1px solid #1a1210;
+  }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #2e1f17;
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    color: var(--pale);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    margin-bottom: 24px;
+  }
+
+  h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--dust);
+    margin-bottom: 12px;
+    letter-spacing: 0.02em;
+  }
+
+  p {
+    color: var(--ash);
+    font-size: 17px;
+    max-width: 680px;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+
+  .mission-block {
+    background: #1a1210;
+    border-left: 3px solid var(--rust);
+    padding: 32px 36px;
+    margin: 40px 0;
+    max-width: 720px;
+  }
+
+  .mission-block p {
+    font-style: italic;
+    font-size: 21px;
+    color: var(--pale);
+    margin: 0;
+  }
+
+  .uvp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+    background: #1a1210;
+  }
+
+  .uvp-card {
+    background: #0a0705;
+    padding: 32px 28px;
+  }
+
+  .uvp-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--rust);
+    opacity: 0.4;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .uvp-card h3 {
+    font-size: 16px;
+    font-family: 'DM Mono', monospace;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--dust);
+    margin-bottom: 10px;
+  }
+
+  .uvp-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    max-width: none;
+    margin: 0;
+  }
+
+  .palette-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .swatch { display: flex; flex-direction: column; gap: 10px; }
+
+  .swatch-color { height: 80px; border-radius: 2px; }
+
+  .swatch-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--ash);
+    line-height: 1.4;
+  }
+
+  .swatch-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 14px;
+    color: var(--dust);
+    font-style: italic;
+  }
+
+  .logo-area {
+    background: #1a1210;
+    padding: 60px;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    flex-wrap: wrap;
+  }
+
+  .logo-main { display: flex; flex-direction: column; align-items: flex-start; }
+
+  .logo-symbol { width: 64px; height: 64px; margin-bottom: 16px; }
+
+  .logo-wordmark {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 52px;
+    letter-spacing: 0.06em;
+    color: var(--pale);
+    line-height: 1;
+  }
+
+  .logo-wordmark .dot { color: var(--rust); }
+
+  .logo-tagline-sm {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+    color: var(--ash);
+    text-transform: uppercase;
+    margin-top: 8px;
+  }
+
+  .logo-description { flex: 1; min-width: 260px; }
+  .logo-description p { font-size: 15px; max-width: none; }
+
+  .type-showcase { margin-top: 40px; background: #1a1210; padding: 48px; }
+
+  .type-row {
+    display: flex;
+    align-items: baseline;
+    gap: 32px;
+    padding: 20px 0;
+    border-bottom: 1px solid #2e1f17;
+  }
+
+  .type-row:last-child { border-bottom: none; }
+
+  .type-meta {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--ash);
+    letter-spacing: 0.1em;
+    width: 160px;
+    flex-shrink: 0;
+  }
+
+  .type-sample-display {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 48px;
+    color: var(--pale);
+    letter-spacing: 0.04em;
+  }
+
+  .type-sample-serif {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    color: var(--dust);
+    font-style: italic;
+  }
+
+  .type-sample-mono {
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--rust);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+    background: #1a1210;
+  }
+
+  .menu-item { background: #0a0705; padding: 36px 32px; }
+
+  .menu-item-category {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+
+  .menu-item h3 { font-size: 20px; color: var(--pale); margin-bottom: 8px; }
+
+  .menu-item p {
+    font-size: 13px;
+    line-height: 1.6;
+    max-width: none;
+    margin-bottom: 20px;
+  }
+
+  .menu-price {
+    font-family: 'DM Mono', monospace;
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  .posts-stack { display: flex; flex-direction: column; gap: 2px; margin-top: 40px; background: #1a1210; }
+
+  .post-card {
+    background: #0a0705;
+    padding: 32px 36px;
+    display: grid;
+    grid-template-columns: 90px 1fr;
+    gap: 28px;
+    align-items: start;
+  }
+
+  .post-platform {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    color: var(--ash);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    line-height: 1.4;
+    padding-top: 3px;
+  }
+
+  .post-caption {
+    font-size: 16px;
+    color: var(--pale);
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 12px;
+    max-width: none;
+  }
+
+  .post-visual-note {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--ash);
+    letter-spacing: 0.08em;
+    padding: 8px 12px;
+    border: 1px solid #2e1f17;
+    display: inline-block;
+  }
+
+  .slogan-block {
+    padding: 80px 60px;
+    background: var(--rust);
+    text-align: center;
+  }
+
+  .slogan-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(36px, 6vw, 72px);
+    color: var(--pale);
+    letter-spacing: 0.05em;
+    line-height: 1.1;
+  }
+
+  .slogan-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: rgba(240,232,223,0.6);
+    margin-top: 16px;
+  }
+
+  .tone-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+    margin-top: 40px;
+    background: #1a1210;
+  }
+
+  .tone-card { background: #0a0705; padding: 28px 32px; }
+
+  .tone-card .label {
+    font-family: 'DM Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: var(--rust);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .tone-card .value {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--dust);
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .footer-section {
+    padding: 48px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0a0705;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 28px;
+    letter-spacing: 0.06em;
+    color: var(--pale);
+  }
+
+  .footer-logo .dot { color: var(--rust); }
+
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    color: var(--ash);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 600px) {
+    section, .cover { padding: 60px 28px; }
+    .uvp-grid { grid-template-columns: 1fr; }
+    .palette-grid { grid-template-columns: repeat(3, 1fr); }
+    .menu-grid { grid-template-columns: 1fr; }
+    .tone-grid { grid-template-columns: 1fr; }
+    .logo-area { padding: 32px; gap: 40px; }
+    .post-card { grid-template-columns: 1fr; gap: 10px; }
+    .slogan-block { padding: 60px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-bg-line"></div>
+  <div class="cover-circle"></div>
+  <div class="eyebrow">Brand Guidelines — Confidential Document v1.0</div>
+  <div class="brand-name">RED<br><span class="accent">GROUND</span></div>
+  <div class="brand-tagline">Coffee for those who chose the harder planet.</div>
+  <div class="brand-sub">Olympus City · Hellas Basin · Valles Marineris Terminal · Est. M-Year 34</div>
+</div>
+
+<!-- BRAND IDENTITY -->
+<section>
+  <div class="section-label">01 — Brand Identity</div>
+  <h2>Who We Are</h2>
+  <p>Redground is Mars's first and only native-grown coffee chain. Founded in the pressurized agri-domes of Olympus City's Lower Ring, we source our beans from hydroponic dark-roast farms tucked inside Tharsis crater networks — grown under LED-tuned spectrums that mimic an Earth dawn no living Martian has ever seen.</p>
+  <p>We are not nostalgic. We are not a reminder of Earth. We are what coffee becomes when it grows somewhere harder.</p>
+
+  <div class="mission-block">
+    <p>"We exist to give the people of Mars a ritual that belongs to them — not borrowed, not replicated, not shipped at 20-minute signal delay. Redground is yours."</p>
+  </div>
+
+  <h3>Unique Value Proposition</h3>
+  <div class="uvp-grid">
+    <div class="uvp-card">
+      <div class="uvp-num">01</div>
+      <h3>Grown on Mars</h3>
+      <p>100% hydroponic cultivation inside pressurized basalt-walled domes. Zero import tariffs. Zero Earth customs lag. No supply chain that could be severed by a dust storm in transit orbit.</p>
+    </div>
+    <div class="uvp-card">
+      <div class="uvp-num">02</div>
+      <h3>Low-G Brewing</h3>
+      <p>Our proprietary 0.38g extraction method produces a crema density impossible to replicate on Earth. Every espresso is a literal product of Martian gravity — a sensory experience exclusive to this planet.</p>
+    </div>
+    <div class="uvp-card">
+      <div class="uvp-num">03</div>
+      <h3>Dome-First Design</h3>
+      <p>Every Redground location is architecturally embedded into its dome neighborhood. No two look alike. The Hellas Basin cafe is carved into the crater wall. Olympus Mons Summit has transparent ceilings.</p>
+    </div>
+  </div>
+
+  <div style="margin-top: 40px;">
+    <h3>Tone of Voice</h3>
+    <p>Our voice sits at the intersection of frontier pragmatism and quiet pride. We don't shout. We don't romanticize. We speak like someone who's earned their place on a difficult planet.</p>
+    <div class="tone-grid">
+      <div class="tone-card">
+        <div class="label">We are</div>
+        <div class="value">Understated. Confident. Bone-dry in humor. We treat our customers as capable adults who signed a multi-year colony contract.</div>
+      </div>
+      <div class="tone-card">
+        <div class="label">We are not</div>
+        <div class="value">Nostalgic for Earth. Precious about "artisan culture." Overly aspirational. Or ever, ever, preachy about sustainability.</div>
+      </div>
+      <div class="tone-card">
+        <div class="label">On product</div>
+        <div class="value">Precise and sensory. We describe taste, texture, and experience with the care of a geologist describing a rock formation.</div>
+      </div>
+      <div class="tone-card">
+        <div class="label">On community</div>
+        <div class="value">Warm but not sentimental. We know the colony is hard. We're just here making it slightly more worth staying.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGO -->
+<section>
+  <div class="section-label">02 — Logo & Visual Identity</div>
+  <h2>The Mark</h2>
+  <p>The Redground logo is built around a fractured planetary circle — the "Breach" — representing Mars's volcanic past, the break from Earth, and the pressurized integrity of a dome. It is asymmetric by design.</p>
+
+  <div class="logo-area">
+    <div class="logo-main">
+      <svg class="logo-symbol" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="32" cy="32" r="28" stroke="#b84a1e" stroke-width="1.5"/>
+        <circle cx="32" cy="32" r="20" stroke="#b84a1e" stroke-width="0.75" stroke-dasharray="3 4" opacity="0.5"/>
+        <path d="M32 4 L32 20 M32 44 L32 60" stroke="#b84a1e" stroke-width="1" opacity="0.3"/>
+        <path d="M4 32 L20 32 M44 32 L60 32" stroke="#b84a1e" stroke-width="1" opacity="0.3"/>
+        <path d="M20 14 L28 26 M36 38 L44 50" stroke="#b84a1e" stroke-width="1.5"/>
+        <path d="M44 14 L36 26 M28 38 L20 50" stroke="#b84a1e" stroke-width="0.75" opacity="0.4"/>
+        <circle cx="32" cy="32" r="3" fill="#b84a1e"/>
+        <circle cx="28" cy="26" r="1.5" fill="#b84a1e" opacity="0.6"/>
+        <circle cx="36" cy="38" r="1.5" fill="#b84a1e" opacity="0.6"/>
+      </svg>
+      <div class="logo-wordmark">RED<span class="dot">.</span>GROUND</div>
+      <div class="logo-tagline-sm">Olympus City · Est. M-Year 34</div>
+    </div>
+    <div class="logo-description">
+      <h3>Symbol — The Breach</h3>
+      <p>A fractured circle built from Martian geological survey coordinates. The center point represents Olympus City. The radiating fault lines map to our original four dome locations. The incomplete outer ring signals openness — this is a world still being built.</p>
+      <p>The wordmark uses Bebas Neue at extended tracking. The period between RED and GROUND is structural — a deliberate pause, the way a colonist speaks: with certainty and no wasted breath.</p>
+    </div>
+  </div>
+
+  <div class="type-showcase">
+    <div class="type-row">
+      <div class="type-meta">Display / Headings<br>Bebas Neue</div>
+      <div class="type-sample-display">Crater Blend</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">Body / Editorial<br>Cormorant Garamond</div>
+      <div class="type-sample-serif">Grown in basalt, pressed in low gravity, served at the edge of everything.</div>
+    </div>
+    <div class="type-row">
+      <div class="type-meta">Labels / Data<br>DM Mono</div>
+      <div class="type-sample-mono">Dome: Hellas Basin · 22 MRC · Batch 00417</div>
+    </div>
+  </div>
+</section>
+
+<!-- COLOUR PALETTE -->
+<section>
+  <div class="section-label">03 — Colour Palette</div>
+  <h2>The Spectrum</h2>
+  <p>Derived from Martian regolith, basalt shadow, and the particular quality of light that filters through a pressurized polycarbonate dome at 0600 local.</p>
+  <div class="palette-grid">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #b84a1e;"></div>
+      <div class="swatch-name">Crater Rust</div>
+      <div class="swatch-label">#B84A1E<br>Primary Brand</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #0a0705;"></div>
+      <div class="swatch-name">Void</div>
+      <div class="swatch-label">#0A0705<br>Primary Background</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #f0e8df;"></div>
+      <div class="swatch-name">Dome Light</div>
+      <div class="swatch-label">#F0E8DF<br>Primary Text</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c9a882;"></div>
+      <div class="swatch-name">Regolith Dust</div>
+      <div class="swatch-label">#C9A882<br>Secondary Text</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #c4a35a;"></div>
+      <div class="swatch-name">Tharsis Gold</div>
+      <div class="swatch-label">#C4A35A<br>Accent / Pricing</div>
+    </div>
+  </div>
+  <div class="palette-grid" style="margin-top: 16px;">
+    <div class="swatch">
+      <div class="swatch-color" style="background: #1a1210;"></div>
+      <div class="swatch-name">Basalt</div>
+      <div class="swatch-label">#1A1210<br>Surface / Cards</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #2e1f17;"></div>
+      <div class="swatch-name">Deep Crater</div>
+      <div class="swatch-label">#2E1F17<br>Borders / Dividers</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #8c7b6e;"></div>
+      <div class="swatch-name">Ash</div>
+      <div class="swatch-label">#8C7B6E<br>Muted Text</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #d4673a;"></div>
+      <div class="swatch-name">Eruption</div>
+      <div class="swatch-label">#D4673A<br>Hover States</div>
+    </div>
+    <div class="swatch">
+      <div class="swatch-color" style="background: #e8b89a;"></div>
+      <div class="swatch-name">Dust Veil</div>
+      <div class="swatch-label">#E8B89A<br>Light Accent</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCT MENU -->
+<section>
+  <div class="section-label">04 — Products & Services</div>
+  <h2>The Menu</h2>
+  <p>All prices in Mars Credits (MRC). Earth currency not accepted. Currency exchange available at Olympus City Transit Hub, Level 3.</p>
+
+  <div class="menu-grid">
+    <div class="menu-item">
+      <div class="menu-item-category">Signature Drink</div>
+      <h3>The 0.38</h3>
+      <p>Our house espresso, extracted under Martian gravitational conditions. Produces a crema three times thicker than anything achievable on Earth — a pale amber foam with seismic layer patterning. Single-origin from Hellas Basin Dome 7 hydroponic batch.</p>
+      <div class="menu-price">9 MRC — Single / 13 MRC — Double</div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-category">Seasonal Exclusive</div>
+      <h3>Dust Storm Dark</h3>
+      <p>A limited blend released only during Tharsis regional dust season (Months 14–18 of the Martian calendar). Heavily oxidized notes from thermal stress during growth cycles. Tastes like difficulty. Some customers reorder 40 times.</p>
+      <div class="menu-price">22 MRC — 200ml / Seasonal only</div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-category">Subscription Tier</div>
+      <h3>Colony Pass</h3>
+      <p>Monthly subscription for colonists on long-term habitat contracts. Unlimited standard pours at any Redground dome location. Includes priority service during oxygen-rationing events. No Earth billing. Renews automatically in MRC via colony wage deductions if opted in.</p>
+      <div class="menu-price">180 MRC / month</div>
+    </div>
+    <div class="menu-item">
+      <div class="menu-item-category">Home Brewing</div>
+      <h3>Regolith Press Kit</h3>
+      <p>Our proprietary low-gravity French press, re-engineered for 0.38g fluid dynamics. Ships with 200g of ground Crater Blend and a calibration card for your specific dome atmospheric pressure. Required for consistent extraction in non-pressurized hab units.</p>
+      <div class="menu-price">340 MRC — One-time</div>
+    </div>
+  </div>
+</section>
+
+<!-- SLOGAN -->
+<div class="slogan-block">
+  <div class="slogan-text">Not shipped from Earth.<br>Not reminiscing about it.</div>
+  <div class="slogan-sub">— Redground Promotional Slogan, M-Year 34 Brand Refresh</div>
+</div>
+
+<!-- SOCIAL MEDIA -->
+<section>
+  <div class="section-label">05 — Social Media Kit</div>
+  <h2>Signal Delay Strategy</h2>
+  <p>All Redground social content is produced and scheduled on-site. We do not route through Earth servers. Posts deploy from our Olympus City uplink at ~11-minute transmission delay. Strategy is built around Mars-first audiences — Earth viewers are welcome, but our content doesn't explain itself to them.</p>
+
+  <div class="posts-stack">
+    <div class="post-card">
+      <div class="post-platform">Instagram<br>#1<br>Product Launch</div>
+      <div class="post-content">
+        <p class="post-caption">"Batch 00417 is out. Dust Storm Dark is back. For those who waited through the whole season — you know what this means. For those who missed the last run — the wait made it worse. It'll do the same to you. See you at the dome." #redground #duststormdark #hellasbasin</p>
+        <div class="post-visual-note">Visual: extreme macro of crema surface. single color — no branding overlay. product sells itself.</div>
+      </div>
+    </div>
+    <div class="post-card">
+      <div class="post-platform">Instagram<br>#2<br>World-Building</div>
+      <div class="post-content">
+        <p class="post-caption">"22:00 local. The Valles Marineris Terminal is quiet. Emergency lighting on. Half the colony is asleep. The other half is running a night shift that never ends. We're open. Dome 4, Level 2, Pressurized Annex B. Come in. We'll pretend it's morning." #redground #colonist #nightshift</p>
+        <div class="post-visual-note">Visual: long-exposure photo of café interior through dome glass. mars surface dark and still beyond. warm amber interior light.</div>
+      </div>
+    </div>
+    <div class="post-card">
+      <div class="post-platform">X / Twitter<br>#3<br>Brand Voice</div>
+      <div class="post-content">
+        <p class="post-caption">"Earth coffee has to be shipped 54.6 million km on average, sit in cargo dock quarantine, then survive atmospheric re-entry customs inspection. Ours was grown 4 domes over. We're not saying we're better. We're just saying we're here."</p>
+        <div class="post-visual-note">Visual: plain text post. no image. the copy is the post.</div>
+      </div>
+    </div>
+    <div class="post-card">
+      <div class="post-platform">Instagram<br>#4<br>Community</div>
+      <div class="post-content">
+        <p class="post-caption">"Mara, Geologist, 3rd rotation, Tharsis Field Survey Unit. She drinks The 0.38 before every EVA. Has for 4 years. We've never asked why. That's her business. This is just hers." @mara.k.tharsis #redground #colonists #evashifts</p>
+        <div class="post-visual-note">Visual: portrait, available light, dome interior. subject holds cup. no forced smile. shot on high-ISO as if documentary.</div>
+      </div>
+    </div>
+    <div class="post-card">
+      <div class="post-platform">Instagram<br>#5<br>Education</div>
+      <div class="post-content">
+        <p class="post-caption">"Why does our espresso taste different from Earth espresso? The crema is water vapor. In 0.38g, it rises slower. Disperses differently. Sits on the surface 40% longer. The foam you're drinking is Martian physics. You cannot replicate it. This is it." #redground #gravitybrewing #science</p>
+        <div class="post-visual-note">Visual: side-by-side infographic — earth crema vs mars crema cross section. clinical, minimal, no decorative elements.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer-section">
+  <div class="footer-logo">RED<span class="dot">.</span>GROUND</div>
+  <div class="footer-copy">Brand Guidelines v1.0 · Olympus City · M-Year 34 · Internal Use Only</div>
+</div>
+
+</body>
+</html>
