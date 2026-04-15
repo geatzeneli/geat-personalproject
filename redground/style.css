@@ -1,0 +1,619 @@
+/*
+Theme Name: REDGROUND — OLYMPUS TERMINAL
+Theme URI: https://example.com/redground-olympus-terminal
+Author: OpenAI
+Author URI: https://openai.com/
+Description: Frontier-Maximalist WordPress theme for a fictional Martian coffee collective. Built as a technical, high-fidelity colony interface.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: redground-olympus-terminal
+Tags: custom-logo, editor-style, featured-images, full-width-template, blog, accessibility-ready
+*/
+
+:root {
+  --bg: #0A0705;
+  --bg-alt: #120D0A;
+  --panel: rgba(18, 13, 10, 0.92);
+  --panel-border: rgba(184, 74, 30, 0.42);
+  --accent: #B84A1E;
+  --accent-soft: rgba(184, 74, 30, 0.18);
+  --gold: #C4A35A;
+  --text: #F0E8DF;
+  --muted: rgba(240, 232, 223, 0.72);
+  --line: rgba(240, 232, 223, 0.08);
+  --shadow: 0 24px 80px rgba(0, 0, 0, 0.45);
+  --radius-xl: 28px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --max-width: 1240px;
+  --space: clamp(1rem, 2vw, 1.6rem);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at top, rgba(184, 74, 30, 0.10), transparent 40%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 18%),
+    repeating-linear-gradient(90deg, transparent 0 58px, rgba(196, 163, 90, 0.03) 58px 59px),
+    repeating-linear-gradient(0deg, transparent 0 58px, rgba(196, 163, 90, 0.03) 58px 59px),
+    var(--bg);
+  color: var(--text);
+  font-family: 'Cormorant Garamond', serif;
+  line-height: 1.65;
+  min-height: 100vh;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02) 0,
+    rgba(255, 255, 255, 0.02) 1px,
+    transparent 2px,
+    transparent 4px
+  );
+  mix-blend-mode: overlay;
+  opacity: 0.18;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.18)),
+    radial-gradient(circle at 50% 0%, rgba(196, 163, 90, 0.08), transparent 36%);
+  z-index: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration-color: rgba(196, 163, 90, 0.5);
+  text-underline-offset: 0.15em;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--gold);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.site-shell,
+.site-header,
+.site-footer {
+  position: relative;
+  z-index: 1;
+}
+
+.site-header,
+.site-footer,
+.content-panel,
+.sidebar-panel,
+.post-card {
+  backdrop-filter: blur(10px);
+  background: linear-gradient(180deg, rgba(18, 13, 10, 0.96), rgba(10, 7, 5, 0.92));
+  border: 1px solid var(--panel-border);
+  box-shadow: var(--shadow);
+}
+
+.site-header {
+  border-bottom: 1px solid rgba(196, 163, 90, 0.16);
+}
+
+.header-inner,
+.footer-inner,
+.main-inner {
+  width: min(var(--max-width), calc(100% - (var(--space) * 2)));
+  margin: 0 auto;
+}
+
+.header-inner {
+  display: grid;
+  gap: 1rem;
+  padding: 1.2rem 0;
+}
+
+.branding {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-title {
+  margin: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.4rem, 6vw, 5.2rem);
+  letter-spacing: 0.12em;
+  line-height: 0.9;
+  text-transform: uppercase;
+}
+
+.site-title a {
+  text-decoration: none;
+}
+
+.site-description {
+  margin: 0;
+  color: var(--muted);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  max-width: 44rem;
+}
+
+.signal-strip {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.signal-card {
+  padding: 0.9rem 1rem;
+  border: 1px solid rgba(240, 232, 223, 0.08);
+  border-radius: var(--radius-md);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+}
+
+.signal-label {
+  display: block;
+  margin-bottom: 0.35rem;
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.signal-value {
+  font-family: 'DM Mono', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+}
+
+.colony-horizon {
+  height: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.colony-horizon::before,
+.colony-horizon::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+.colony-horizon::before {
+  background:
+    radial-gradient(circle at 16% 120%, transparent 0 28px, rgba(196, 163, 90, 0.85) 29px 31px, transparent 32px),
+    radial-gradient(circle at 54% 120%, transparent 0 42px, rgba(184, 74, 30, 0.88) 43px 46px, transparent 47px),
+    radial-gradient(circle at 86% 120%, transparent 0 24px, rgba(196, 163, 90, 0.72) 25px 27px, transparent 28px);
+  opacity: 0.9;
+}
+
+.colony-horizon::after {
+  background: linear-gradient(180deg, transparent, rgba(240, 232, 223, 0.16));
+  mix-blend-mode: screen;
+}
+
+.main-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(290px, 0.7fr);
+  gap: 1.4rem;
+  padding: 1.6rem 0 2.4rem;
+}
+
+.content-panel,
+.sidebar-panel {
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+}
+
+.content-panel {
+  padding: clamp(1rem, 2vw, 1.8rem);
+}
+
+.archive-heading,
+.sidebar-heading {
+  margin: 0 0 1rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(1.6rem, 3vw, 2.6rem);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.post-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.post-card {
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.post-card-inner {
+  padding: 1.3rem;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  align-items: center;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.post-meta .category-label {
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(196, 163, 90, 0.22);
+  color: var(--gold);
+  background: rgba(196, 163, 90, 0.06);
+}
+
+.post-title {
+  margin: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 0.94;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.post-title a {
+  text-decoration: none;
+}
+
+.post-excerpt,
+.post-content {
+  color: var(--text);
+  font-size: 1.12rem;
+}
+
+.post-content p:first-child,
+.post-excerpt p:first-child {
+  margin-top: 0;
+}
+
+.post-content p:last-child,
+.post-excerpt p:last-child {
+  margin-bottom: 0;
+}
+
+.post-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(196, 163, 90, 0.45), transparent);
+}
+
+.sidebar-panel {
+  padding: 1.2rem;
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+.sidebar-unit {
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+  background:
+    linear-gradient(180deg, rgba(184, 74, 30, 0.08), rgba(255, 255, 255, 0.02)),
+    repeating-linear-gradient(90deg, transparent 0 18px, rgba(255, 255, 255, 0.015) 18px 19px);
+  border: 1px solid rgba(240, 232, 223, 0.08);
+}
+
+.sidebar-unit .unit-label {
+  display: block;
+  margin-bottom: 0.45rem;
+  color: var(--gold);
+  font-family: 'DM Mono', monospace;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.sidebar-unit .unit-value {
+  margin: 0;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem;
+  letter-spacing: 0.08em;
+}
+
+.sidebar-unit .unit-copy,
+.widget,
+.widget p,
+.widget li {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.sidebar-unit .unit-copy {
+  margin: 0;
+}
+
+.widget-title {
+  margin: 0 0 0.75rem;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.footer-inner {
+  padding: 1rem 0 1.4rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.footer-inner p {
+  margin: 0;
+  font-family: 'DM Mono', monospace;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.version-string {
+  color: var(--gold);
+}
+
+.entry-empty {
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  border: 1px dashed rgba(240, 232, 223, 0.16);
+  color: var(--muted);
+}
+
+@media (max-width: 980px) {
+  .signal-strip,
+  .main-inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .header-inner,
+  .footer-inner {
+    width: min(100% - 1.2rem, var(--max-width));
+  }
+
+  .site-title {
+    font-size: clamp(2rem, 12vw, 3.8rem);
+  }
+
+  .post-card-inner,
+  .content-panel,
+  .sidebar-panel {
+    padding: 1rem;
+  }
+}
+
+/* MAIN LAYOUT */
+.site-main {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    gap: 40px;
+    padding: 40px;
+}
+
+/* HERO */
+.rg-hero {
+    grid-column: 1 / -1;
+    padding: 60px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* SLIDER */
+.rg-slider {
+    grid-column: 1 / -1;
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.rg-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.rg-slide-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.4;
+}
+
+.rg-slide-content {
+    position: relative;
+    z-index: 2;
+    padding: 40px;
+}
+
+/* GRID */
+.rg-grid-inner {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+}
+
+/* CARD */
+.rg-card {
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 20px;
+    background: rgba(255,255,255,0.02);
+    transition: all 0.3s ease;
+}
+
+.rg-card:hover {
+    border-color: #B84A1E;
+    transform: translateY(-5px);
+}
+
+/* SIDEBAR */
+.rg-sidebar {
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+}
+
+.rg-widget {
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    background: rgba(255,255,255,0.02);
+}
+
+/* TYPOGRAPHY FIX */
+h1, h2, h3 {
+    color: #F0E8DF;
+}
+
+p {
+    color: rgba(240,232,223,0.8);
+}
+
+/* GRID OVERLAY */
+.rg-overlay-grid {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+/* SCANLINES */
+.rg-scanlines {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.2),
+        rgba(0,0,0,0.2) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    pointer-events: none;
+}
+
+.site-main {
+    width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 40px 60px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap: 32px;
+    align-items: start;
+}
+
+.rg-hero,
+.rg-slider,
+.rg-grid {
+    grid-column: 1 / 2;
+}
+
+.rg-sidebar {
+    grid-column: 2 / 3;
+    position: sticky;
+    top: 40px;
+}
+
+.rg-grid-inner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+    margin-top: 32px;
+}
+
+.rg-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(240, 232, 223, 0.09);
+    border-radius: 18px;
+    padding: 24px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+.rg-card-title {
+    margin: 12px 0 0;
+    font-size: 2rem;
+    line-height: 0.95;
+}
+
+.rg-thumb img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 14px;
+    margin: 18px 0;
+}
+
+.rg-slider {
+    height: 380px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid rgba(240, 232, 223, 0.08);
+    margin: 24px 0 40px;
+}
+
+.rg-slide {
+    position: absolute;
+    inset: 0;
+}
+
+.rg-slide-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.35;
+}
+
+.rg-slide-content {
+    position: relative;
+    z-index: 2;
+    padding: 36px;
+    max-width: 760px;
+}
