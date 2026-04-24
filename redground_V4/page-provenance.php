@@ -25,7 +25,7 @@ $tx = array(
 		<div class="wrap">
 			<div class="pagehead__bar"><span class="code">// PRV · ORIGIN TELEMETRY</span><span class="line"></span><span>6 NODES TRACKED</span></div>
 			<h1 class="pagehead__title">Provenance</h1>
-			<p class="pagehead__sub">Every bean came from somewhere on Earth — and we know exactly where, who grew it, and what they were paid.</p>
+			<p class="pagehead__sub">Every bean came from somewhere on Earth, and we know exactly where, who grew it, and what they were paid.</p>
 		</div>
 	</section>
 
